@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Priyanshu Raj — Student portfolio, learning hub, notes and achievements.">
+<meta name="theme-color" content="#0f172a">
+<title>Priyanshu Raj | Student Portfolio</title>
+
+<style>
+:root{
+  --bg:#f8fafc;
+  --surface:#ffffff;
+  --surface-2:#eef2ff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --primary:#2563eb;
+  --primary-dark:#1d4ed8;
+  --accent:#7c3aed;
+  --border:#e2e8f0;
+  --shadow:0 12px 35px rgba(15,23,42,.08);
+  --radius:20px;
+}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.6;
+}
+a{color:inherit}
+.container{width:min(1120px,92%);margin:auto}
+header{
+  min-height:78vh;
+  display:flex;align-items:center;
+  background:
+    radial-gradient(circle at 10% 20%,rgba(37,99,235,.22),transparent 30%),
+    radial-gradient(circle at 90% 20%,rgba(124,58,237,.20),transparent 28%),
+    linear-gradient(135deg,#0f172a,#172554 55%,#312e81);
+  color:white;position:relative;overflow:hidden;
+}
+header:after{
+  content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(255,255,255,.12);
+  border-radius:50%;right:-130px;bottom:-180px;
+}
+.hero{position:relative;z-index:1;padding:90px 0}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;padding:7px 13px;
+  border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);
+  border-radius:999px;font-size:.9rem;backdrop-filter:blur(10px);
+}
+.hero h1{font-size:clamp(2.7rem,7vw,5.5rem);line-height:1.02;margin:22px 0 14px;letter-spacing:-.05em}
+.hero h1 span{background:linear-gradient(90deg,#93c5fd,#c4b5fd);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:700px;color:#dbeafe;font-size:1.15rem;margin:0 0 30px}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;text-decoration:none;
+  padding:12px 18px;border-radius:12px;font-weight:700;border:1px solid transparent;
+  transition:.2s ease;cursor:pointer;
+}
+.btn-primary{background:white;color:#172554}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(0,0,0,.18)}
+.btn-outline{border-color:rgba(255,255,255,.28);color:white;background:rgba(255,255,255,.06)}
+.btn-outline:hover{background:rgba(255,255,255,.13)}
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(15,23,42,.92);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.nav-inner{min-height:62px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-weight:900;color:white;text-decoration:none;letter-spacing:-.03em}
+.nav-links{display:flex;gap:5px;align-items:center;flex-wrap:wrap}
+.nav-links a{
+  color:#cbd5e1;text-decoration:none;padding:8px 10px;border-radius:9px;font-size:.92rem;
+}
+.nav-links a:hover{color:white;background:rgba(255,255,255,.08)}
+section{padding:78px 0}
+.section-heading{margin-bottom:30px}
+.eyebrow{text-transform:uppercase;letter-spacing:.14em;color:var(--primary);font-size:.78rem;font-weight:800}
+h2{font-size:clamp(1.9rem,4vw,2.7rem);margin:6px 0}
+.section-heading p{color:var(--muted);max-width:680px}
+.grid{display:grid;gap:20px}
+.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:25px;box-shadow:var(--shadow);transition:.2s ease;
+}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 45px rgba(15,23,42,.11)}
+.icon{
+  width:45px;height:45px;border-radius:13px;display:grid;place-items:center;
+  background:var(--surface-2);font-size:1.3rem;margin-bottom:16px;
+}
+.card h3{margin:0 0 8px;font-size:1.15rem}
+.card p{color:var(--muted);margin:0}
+.subject{border-top:4px solid var(--primary)}
+.skill-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.skill{
+  padding:8px 12px;border-radius:999px;background:#f1f5f9;
+  border:1px solid var(--border);font-weight:700;font-size:.9rem
+}
+.achievement{position:relative;padding-left:58px}
+.achievement .medal{
+  position:absolute;left:0;top:0;width:42px;height:42px;border-radius:12px;
+  display:grid;place-items:center;background:#fef3c7;
+}
+.notes-area{background:linear-gradient(180deg,#eef2ff 0,#f8fafc 100%)}
+textarea{
+  width:100%;resize:vertical;min-height:140px;padding:14px;border:1px solid var(--border);
+  border-radius:12px;font:inherit;outline:none;background:white;
+}
+textarea:focus{border-color:#93c5fd;box-shadow:0 0 0 4px rgba(37,99,235,.1)}
+input[type=file]{width:100%;padding:12px;border:1px dashed #94a3b8;border-radius:12px;background:#f8fafc}
+button.btn-save{border:0;background:var(--primary);color:white}
+button.btn-save:hover{background:var(--primary-dark)}
+.note-item{border-top:1px solid var(--border);padding:17px 0}
+.note-item:first-child{border-top:0}
+.note-title{font-weight:800}
+.note-date{font-size:.8rem;color:var(--muted)}
+.note-item img{max-width:220px;max-height:180px;object-fit:cover;border-radius:10px;margin:10px 0}
+.delete-btn{
+  border:0;background:#fee2e2;color:#991b1b;padding:7px 11px;border-radius:8px;
+  cursor:pointer;font-weight:700;margin-top:8px;
+}
+footer{background:#0f172a;color:#94a3b8;padding:35px 0;text-align:center}
+footer strong{color:white}
+.contact-link{color:var(--primary);font-weight:700;text-decoration:none}
+.empty{color:var(--muted);padding:10px 0}
+@media(max-width:800px){
+  .grid-2,.grid-3{grid-template-columns:1fr}
+  .nav-inner{align-items:flex-start;padding:10px 0;flex-direction:column}
+  .nav-links{width:100%;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px}
+  .nav-links a{white-space:nowrap}
+  header{min-height:72vh}
+}
+@media(prefers-reduced-motion:no-preference){
+  .hero>*{animation:rise .7s ease both}
+  .hero>*:nth-child(2){animation-delay:.08s}
+  .hero>*:nth-child(3){animation-delay:.16s}
+  .hero>*:nth-child(4){animation-delay:.24s}
+  @keyframes rise{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
+}
+</style>
+</head>
+
+<body>
+<header id="home">
+  <div class="container hero">
+    <span class="badge">🎓 Student Portfolio</span>
+    <h1>Hi, I'm <span>Priyanshu Raj</span>.</h1>
+    <p>Student · Learner · Sharing Knowledge · Coder</p>
+    <p>I use this space to organise useful study material, explore interesting ideas, record achievements, and keep learning.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="#about">Explore Portfolio</a>
+      <a class="btn btn-outline" href="#notes">Open Knowledge Hub</a>
+    </div>
+  </div>
+</header>
+
+<nav aria-label="Main navigation">
+  <div class="container nav-inner">
+    <a class="logo" href="#home">PR.</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#subjects">Subjects</a>
+      <a href="#skills">Skills</a>
+      <a href="#knowledge">Knowledge</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#notes">Notes</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<section id="about">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow">About</div>
+      <h2>A place for learning and growth.</h2>
+    </div>
+    <div class="card">
+      <p>Hello! I am Priyanshu, a student passionate about learning and sharing knowledge. This website is a space where I put together useful information, notes, and topics I find interesting or important for study.</p>
+    </div>
+  </div>
+</section>
+
+<section id="subjects">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow">Academics</div>
+      <h2>Subjects I Study</h2>
+    </div>
+    <div class="grid grid-2">
+      <article class="card subject"><div class="icon">∑</div><h3>Mathematics</h3><p>Problem solving, logical thinking and mathematical concepts.</p></article>
+      <article class="card subject"><div class="icon">⚛</div><h3>Science</h3><p>Exploring concepts through physics, chemistry and biology.</p></article>
+      <article class="card subject"><div class="icon">📖</div><h3>English</h3><p>Reading, writing, communication and language skills.</p></article>
+      <article class="card subject"><div class="icon">💻</div><h3>Computer Science</h3><p>Learning programming, web technologies and digital skills.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow">Capabilities</div>
+      <h2>Skills</h2>
+    </div>
+    <div class="card">
+      <div class="skill-list">
+        <span class="skill">Problem Solving</span>
+        <span class="skill">HTML & CSS</span>
+        <span class="skill">Public Speaking</span>
+        <span class="skill">Time Management</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="knowledge">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow">Knowledge Hub</div>
+      <h2>Learn something useful.</h2>
+    </div>
+    <div class="grid grid-2">
+      <article class="card">
+        <div class="icon">💡</div>
+        <h3>Did You Know?</h3>
+        <p>The human brain can process images in as little as 13 milliseconds, making visual learning one of the fastest ways to absorb information.</p>
+      </article>
+      <article class="card">
+        <div class="icon">⏱️</div>
+        <h3>Study Tip</h3>
+        <p>Breaking study sessions into 25-minute focused blocks with short breaks (the Pomodoro Technique) can improve concentration and retention.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="achievements">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow">Milestones</div>
+      <h2>Achievements</h2>
+    </div>
+    <div class="grid grid-3">
+      <article class="card achievement"><span class="medal">🏆</span><h3>Maths Olympiad</h3><p>Regional IIT Bombay Maths olympiad – 1st Prize</p></article>
+      <article class="card achievement"><span class="medal">📘</span><h3>Web Basics</h3><p>Completed an online course in Web Basics</p></article>
+      <article class="card achievement"><span class="medal">🏆</span><h3>Physics Olympiad</h3><p>IIT Khargpur physics olympiad (Conducted in school) – 1st Prize</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="notes" class="notes-area">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow">Personal Workspace</div>
+      <h2>Notes</h2>
+      <p>Save quick notes or files locally in this browser. Nothing is uploaded to a server.</p>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>📎 Save a File</h3>
+        <p style="margin-bottom:15px">Choose a file from your device.</p>
+        <input type="file" id="fileInput" aria-label="Choose a file">
+      </div>
+
+      <div class="card">
+        <h3>✍️ Write a Note</h3>
+        <textarea id="noteText" placeholder="Type your note here..."></textarea>
+        <button class="btn btn-save" id="saveNoteBtn" type="button" style="margin-top:12px">Save Note</button>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:20px">
+      <h3>📚 Saved Notes</h3>
+      <div id="notesList"></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow">Contact</div>
+      <h2>Let's connect.</h2>
+    </div>
+    <div class="card">
+      <p>Email: <a class="contact-link" href="mailto:py706623@gmail.com">py706623@gmail.com</a></p>
+      <p style="margin-top:8px">Feel free to reach out for collaboration or study discussions!</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <p><strong>Priyanshu Raj</strong></p>
+    <p>© 2026 Priyanshu · All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+const STORAGE_KEY = "myNotes";
+
+function getNotes(){
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+  } catch {
+    return [];
+  }
+}
+
+function saveNotes(notes){
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
+    return true;
+  } catch {
+    alert("This file is too large for browser storage. Try a smaller file.");
+    return false;
+  }
+}
+
+function escapeHTML(value){
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+  }[char]));
+}
+
+function addNote(title, content, fileType, kind){
+  const notes = getNotes();
+  notes.push({
+    title, content, fileType, kind,
+    date: new Date().toLocaleString()
+  });
+  if(saveNotes(notes)) renderNotes();
+}
+
+function deleteNote(index){
+  const notes = getNotes();
+  notes.splice(index,1);
+  saveNotes(notes);
+  renderNotes();
+}
+
+function renderNotes(){
+  const notes = getNotes();
+  const container = document.getElementById("notesList");
+  container.innerHTML = "";
+
+  if(!notes.length){
+    container.innerHTML = '<p class="empty">No notes saved yet.</p>';
+    return;
+  }
+
+  notes.forEach((note,index)=>{
+    const div = document.createElement("div");
+    div.className = "note-item";
+
+    let bodyHTML = "";
+    if(note.kind === "text"){
+      bodyHTML = `<p style="white-space:pre-wrap;margin:8px 0">${escapeHTML(note.content)}</p>`;
+    } else {
+      if(note.fileType && note.fileType.startsWith("image/")){
+        bodyHTML += `<img src="${note.content}" alt="${escapeHTML(note.title)}">`;
+      }
+      bodyHTML += `<br><a class="contact-link" href="${note.content}" download="${escapeHTML(note.title)}">Download file</a>`;
+    }
+
+    div.innerHTML = `
+      <div class="note-title">${escapeHTML(note.title)}</div>
+      <div class="note-date">${escapeHTML(note.date)}</div>
+      ${bodyHTML}
+      <br>
+      <button class="delete-btn" type="button">Delete</button>
+    `;
+
+    div.querySelector(".delete-btn").addEventListener("click",()=>deleteNote(index));
+    container.appendChild(div);
+  });
+}
+
+document.getElementById("fileInput").addEventListener("change", event=>{
+  const file = event.target.files[0];
+  if(!file) return;
+
+  const reader = new FileReader();
+  reader.onload = e => addNote(file.name,e.target.result,file.type,"file");
+  reader.onerror = () => alert("Could not read that file.");
+  reader.readAsDataURL(file);
+  event.target.value = "";
+});
+
+document.getElementById("saveNoteBtn").addEventListener("click",()=>{
+  const textArea = document.getElementById("noteText");
+  const text = textArea.value.trim();
+
+  if(!text){
+    alert("Please write something before saving.");
+    return;
+  }
+
+  addNote("Note - " + new Date().toLocaleString(),text,"text/plain","text");
+  textArea.value = "";
+});
+
+window.addEventListener("DOMContentLoaded",renderNotes);
+</script>
+</body>
+</html>
